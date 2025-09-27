@@ -213,10 +213,10 @@ Install `NodeJS 18.X` and `npm` using [Node Version Manager](https://docs.mirota
 $ git clone https://github.com/miroslavpejic85/mirotalksfu.git
 # Go to to dir mirotalksfu
 $ cd mirotalksfu
-# Copy app/src/config.template.js in app/src/config.js and edit it if needed
-$ cp app/src/config.template.js app/src/config.js
-# Copy .env.template to .env and edit it if needed
-$ cp .env.template .env
+# Copy app/src/config.js in app/src/config.js and edit it if needed
+$ cp app/src/config.js app/src/config.js
+# Copy .env to .env and edit it if needed
+$ cp .env .env
 # Install dependencies - be patient, the first time will take a few minutes, in the meantime have a good coffee ;)
 $ npm install
 # Start the server
@@ -250,12 +250,12 @@ $ SERVER_LISTEN_PORT=3011 npm start
 $ git clone https://github.com/miroslavpejic85/mirotalksfu.git
 # Go to to dir mirotalksfu
 $ cd mirotalksfu
-# Copy app/src/config.template.js in app/src/config.js IMPORTANT (edit it according to your needs)
-$ cp app/src/config.template.js app/src/config.js
-# Copy .env.template to .env and edit it if needed
-$ cp .env.template .env
-# Copy docker-compose.template.yml in docker-compose.yml and edit it if needed
-$ cp docker-compose.template.yml docker-compose.yml
+# Copy app/src/config.js in app/src/config.js IMPORTANT (edit it according to your needs)
+$ cp app/src/config.js app/src/config.js
+# Copy .env to .env and edit it if needed
+$ cp .env .env
+# Copy docker-compose.yml in docker-compose.yml and edit it if needed
+$ cp docker-compose.yml docker-compose.yml
 # (Optional) Get official image from Docker Hub
 $ docker-compose pull
 # Create and start containers

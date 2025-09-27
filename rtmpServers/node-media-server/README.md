@@ -8,7 +8,7 @@ For running an `RTMP` (Real-Time Messaging Protocol) server in Node, **[Node-Med
 
 ```sh
 # Create the config file for the server
-$ cp config.template.js config.js
+$ cp config.js config.js
 # Install the dependencies
 $ npm install
 # Start the RTMP Server
@@ -19,10 +19,10 @@ $ npm start
 
 ```sh
 # Create the config file for the server
-$ cp config.template.js config.js
+$ cp config.js config.js
 
 # Copy the docker.compose.yml
-$ cp docker-compose.template.yml docker-compose.yml
+$ cp docker-compose.yml docker-compose.yml
 
 # Pull the official mirotalk rtmp image
 $ docker pull mirotalk/nms:latest

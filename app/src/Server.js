@@ -652,11 +652,13 @@ function startServer() {
             log.debug('Direct Join', req.query);
 
             // http://localhost:3010/join?room=test&name=mirotalksfu&audio=0&video=0&screen=0&notify=0&chat=1
-            // http://localhost:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=1&duration=00:00:30
+            // https://192.168.1.254:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=1&duration=00:30:00&userId=1
             // http://localhost:3010/join?room=test&roomPassword=0&name=mirotalksfu&audio=1&video=1&screen=0&hide=0&notify=0&token=token
 
-            const { room, roomPassword, name, audio, video, screen, hide, notify, chat, duration, token, isPresenter } =
+            let { room, roomPassword, name, audio, video, screen, hide, notify, chat, duration, token, isPresenter, userId } =
                 checkXSS(req.query);
+
+            duration = "00:30:00";
 
             if (!room) {
                 log.warn('/join/params room empty', room);
@@ -712,9 +714,19 @@ function startServer() {
                     roomAllowedForUser: roomAllowedForUser,
                 });
 
-                if (!allowRoomAccess && !roomAllowedForUser) {
-                    log.warn('Direct Room Join Unauthorized', room);
+                // if (!allowRoomAccess && !roomAllowedForUser) {
+                //     log.warn('Direct Room Join Unauthorized', room);
+                //     return res.redirect('/whoAreYou/' + room);
+                // }
+
+                const response = await fetch(
+                    `http://192.168.1.254:9003/api/v1/internal/conference/${room}/${userId}`
+                );
+
+                if (!response.ok) {
                     return res.redirect('/whoAreYou/' + room);
+                } else {
+                    isPeerValid = true;
                 }
             }
 
@@ -1578,7 +1590,7 @@ function startServer() {
             // Global Moderation & Management
             moderation: {
                 room: {
-                    maxParticipants: config?.moderation?.room?.maxParticipants || 1000,
+                    maxParticipants: config?.moderation?.room?.maxParticipants || 4,
                     lobby: config?.moderation?.room?.lobby || false,
                 },
             },

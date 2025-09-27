@@ -8,7 +8,7 @@ For running an `RTMP` (Real-Time Messaging Protocol) server in Docker, **Nginx w
 
 ```sh
 # Copy the docker.compose.yml
-$ cp docker-compose.template.yml docker-compose.yml
+$ cp docker-compose.yml docker-compose.yml
 
 # Pull the official mirotalk rtmp image
 $ docker pull mirotalk/rtmp:latest
